@@ -1,6 +1,6 @@
 var cacheName = 'utility-task';
 var filesToCache = [
-    '/HelloCordova',
+    '/',
     './index.html',
     './css/index.css',
     './js/index.js',
