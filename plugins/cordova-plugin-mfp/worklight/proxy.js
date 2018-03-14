@@ -7,8 +7,8 @@ var server = http.createServer(app);
 var mfpServer = "https://mobilefoundation-h5-server.au-syd.mybluemix.net:443";
 var mfpServerRuntime = "mfp";
 var appName = "HelloCordova";
-var port = 9081;
-var appURL = 'http://localhost:' + port + '/' + appName + '/';
+var port = 80;
+var appURL = 'https://sangeetmanghnani.github.io/think-pwa-ibm/' + port + '/';
 
 server.listen(port);
 app.use('/' + appName, express.static(__dirname + '/../../../../www'));
@@ -18,9 +18,9 @@ console.log('::: proxy.js ::: Listening on port ' + port);
 app.use('/' + mfpServerRuntime + '/*', function(req, res) {
     var url = mfpServer + req.originalUrl;
     console.log('::: proxy.js ::: Passing request to URL: ' + url);
-    req.pipe(request[req.method.toLowerCase()](url, function (error, response, body) {
+    req.pipe(request[req.method.toLowerCase()](url, function(error, response, body) {
         if (error) {
-            if (error.code === 'ECONNREFUSED'){
+            if (error.code === 'ECONNREFUSED') {
                 console.error('Connection refused: \n', error);
                 process.exit(1);
             } else {
